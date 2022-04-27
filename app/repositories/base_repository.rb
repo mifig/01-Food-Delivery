@@ -1,5 +1,5 @@
 require "csv"
-5
+
 class BaseRepository
   def initialize(csv_path)
     @csv_path = csv_path
@@ -22,7 +22,7 @@ class BaseRepository
   private
 
   def load_csv
-    CSV.foreach(@csv_path, { headers: :first_row, header_converters: :symbol }) do |row|
+    CSV.foreach(@csv_path, headers: :first_row, header_converters: :symbol) do |row|
       convert(row)
       @elements << create_instance(row)
     end
